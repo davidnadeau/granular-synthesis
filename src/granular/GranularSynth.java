@@ -4,7 +4,7 @@ import granular.ui.GranularSynthesizer;
 
 /**
  *
- * @author soote
+ * @author David Nadeau
  */
 public class GranularSynth {
 

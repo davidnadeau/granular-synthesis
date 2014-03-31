@@ -555,7 +555,6 @@ public class GranularSynthesizer extends javax.swing.JFrame {
         double sizeDeviation = sizeDeviationSlider.getValue() / 100;//[0:no deviation, 1: max deviation]
 
         //pitch of grain, 1 is normal
-        System.out.println("pitch:" + (double) pitchSlider.getValue() / 50);
         double grainPitch = (double) pitchSlider.getValue() / 50;
         //random pitch deviation
         double pitchDeviation = pitchDeviationSlider.getValue() / 100;//[0:no deviation, 1: max deviation]
@@ -570,28 +569,9 @@ public class GranularSynthesizer extends javax.swing.JFrame {
 
         boolean SYNCMODE = syncChoice.isSelected();
 
-        wave.synthesize(grainSize, sizeDeviation, grainPitch, pitchDeviation,
+        wave.synthesize(grainSize, sizeDeviation,Integer.parseInt(numberOfGrainsTxt.getText()), grainPitch, pitchDeviation,
                 grainDistance, grainDensity, cloudDuration, SYNCMODE);
         WaveToText.writeTxt(wave);
-
-        String base = System.getProperty("user.dir") + "/src/music/";
-        String cmd
-                = base + "txt2wav " + base + fn + ".wav < " + base + fn + ".txt";
-        try {
-            Runtime.getRuntime().exec(
-                    new String[] {"/bin/sh", "-c", "echo 5 | " + cmd});
-            System.out
-                    .println("Wav file constructed: /src/music/" + fn + ".wav");
-
-        } catch (IOException ex) {
-            System.out.println("FAILED: " + ex.getMessage());
-        }
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

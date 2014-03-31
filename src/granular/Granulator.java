@@ -11,8 +11,7 @@ import java.util.Random;
 public class Granulator extends Wave {
 
     private static final Random random = new Random();
-    private static final int REPEAT = 159;
-    private static final float NORMALIZE = 0.4f;
+    private int REPEAT = 1;
     private final ArrayList<String> samples;
     private LinkedList<int[][]> grains;
     private int wavetableIndex = 0;
@@ -23,7 +22,7 @@ public class Granulator extends Wave {
         this.samples = l;
     }
 
-    public void synthesize(int size, double randDur, double pitch,
+    public void synthesize(int size, double randDur, int numGrains, double pitch,
             double randPitch,
             int distance, int density, int duration, boolean SYNCMODE) {
 
@@ -31,13 +30,13 @@ public class Granulator extends Wave {
         //        Envelope.TRAPEXIUM);
         super.clearData();
         grains = grainDistance(distance);
+        REPEAT = numGrains;
 
         for (int i = 0; i < REPEAT; i++) {
             int[][] grainCloud = grainDensity(density, duration, SYNCMODE);
             print(grainCloud);
             System.out.println(i + "th : GRAIN COMPLETE");
         }
-        System.out.println("PAST CLOUD");
 
         super.setSampleCount(super.getSampleCount());
         super.addHeaders();
