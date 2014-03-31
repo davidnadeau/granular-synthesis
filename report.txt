@@ -1,0 +1,14 @@
+The granular synthesizer can take 10 parameters: grain size, size deviation, number of grains to create, grain pitch, pitch deviation, grain distance, cloud duration, grain density, envolope type, synchronous or asynchronous.
+
+The ui works as follows.
+1) load a file, it must be in the $PROJECT/src/music dir.
+2) set the grain size and number of grains to be created (by default it will be the largest number possible). Choose the envelope type. Select the size deviation, pitch, and pitch deviation. Grain size is the size of each grain, number of grains to create can increase cpu time if too large. For envelopes, choose either no envelope, or an attack sustain release trapexium envelope. Size deviation scales from 0 to 1, where 0 is no deivation, and 1 is the max deviation. Pitch deviation also works this way. Pitch scales from 0 to 2 where 1 is normal pitch, <1 is slower, >1 is faster.
+3. Click (Re)Create Grains.
+
+4) Now adjust the grain distance, cloud duration, and grain density. Grain distance is the distance between each grain, cloud duration is the duration of the cloud, min value is grain size at 0. Grain density is the number of grains to randomely distribute into the grain cloud.
+5) select synchronous or asynchronous. Synchronous will play the grains in order, asynchronous will play the grains randomely
+6) press Granulate. The result will be stored in both txt and wav format at $PROJECT/src/music/ with a filename of "granned-"+originalFileName.
+) open wav file in any player
+
+
+
